@@ -143,9 +143,10 @@ p:last-child {
   color: #ffffff;
   padding: 0 60px;
   display: inline-block;
+  text-align: center;
 }
 
-/* line 76, ../sass/style.scss */
+/* line 77, ../sass/style.scss */
 .button:hover {
   filter: alpha(opacity=0.8);
   color: #ffffff;
@@ -261,9 +262,9 @@ div.nav-container nav ul li:hover {
 
 /* line 3, ../sass/_articles.scss */
 article, section {
-  padding-top: 90px;
+  margin-top: 90px;
   font-family: "Lato", sans-serif;
-  font-size: 14.2px;
+  font-size: 14px;
   line-height: 20px;
   letter-spacing: 0.1px;
   color: #596065;
@@ -372,19 +373,22 @@ article.smaller_post {
 }
 
 /* line 4, ../sass/_widgets.scss */
-.widget h2.entry-title {
+.widget h2.widget_title {
   font-size: 24px;
   line-height: 25px;
   margin-top: 0;
+  margin-bottom: 40px;
 }
 
-/* line 12, ../sass/_widgets.scss */
+/* line 13, ../sass/_widgets.scss */
 .calender_widget article {
+  margin-top: 0px;
   margin-bottom: 18px;
   background: #222527;
   color: #ffffff;
+  height: 70px;
 }
-/* line 17, ../sass/_widgets.scss */
+/* line 20, ../sass/_widgets.scss */
 .calender_widget article h4 {
   font-weight: 400;
   font-family: "Lato", sans-serif;
@@ -392,71 +396,87 @@ article.smaller_post {
   color: #ffffff;
   margin-top: 13px;
   margin-bottom: 3px;
+  display: inline-block;
 }
-/* line 26, ../sass/_widgets.scss */
+/* line 30, ../sass/_widgets.scss */
 .calender_widget article p {
   margin: 0;
   padding-right: 20px;
+  display: inline-block;
 }
-/* line 31, ../sass/_widgets.scss */
+/* line 36, ../sass/_widgets.scss */
 .calender_widget article .date_stamp {
   font-weight: 300;
   height: 70px;
   width: 60px;
   background: #ff8900;
   color: #ffffff;
+  float: left;
+  margin-right: 20px;
+  text-align: center;
 }
-/* line 38, ../sass/_widgets.scss */
+/* line 46, ../sass/_widgets.scss */
 .calender_widget article .date_stamp .day {
   display: block;
   margin-top: 10px;
   font-size: 24px;
   line-height: 29px;
 }
-/* line 45, ../sass/_widgets.scss */
+/* line 53, ../sass/_widgets.scss */
 .calender_widget article .date_stamp .month {
   display: block;
   margin-bottom: 26px;
   font-size: 14px;
 }
 
-/* line 55, ../sass/_widgets.scss */
+/* line 63, ../sass/_widgets.scss */
 .social_widget article {
+  margin-top: 0px;
   margin-bottom: 18px;
   outline: 1px solid #d7e8f4;
+  height: 70px;
 }
-/* line 59, ../sass/_widgets.scss */
+/* line 69, ../sass/_widgets.scss */
 .social_widget article p {
-  padding-right: 20px;
-  margin: 15px 0;
+  margin-top: 13px;
+  margin-right: 20px;
   font-style: italic;
+  display: inline-block;
+  width: 280px;
 }
-/* line 65, ../sass/_widgets.scss */
+/* line 77, ../sass/_widgets.scss */
 .social_widget article .icon_stamp {
   height: 70px;
   width: 60px;
+  float: left;
+  margin-right: 20px;
 }
-/* line 70, ../sass/_widgets.scss */
+/* line 84, ../sass/_widgets.scss */
 .social_widget article .icon_stamp.twitter {
   background: #55acee url("../images/twitter_icon.png") no-repeat;
 }
 @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
-  /* line 70, ../sass/_widgets.scss */
+  /* line 84, ../sass/_widgets.scss */
   .social_widget article .icon_stamp.twitter {
     background-image: url("../images/twitter_icon2x.png");
     background-size: 60px 70px;
   }
 }
-/* line 75, ../sass/_widgets.scss */
+/* line 89, ../sass/_widgets.scss */
 .social_widget article .icon_stamp.fb {
   background: #3b5998 url("../images/fb_icon.png") no-repeat;
 }
 @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
-  /* line 75, ../sass/_widgets.scss */
+  /* line 89, ../sass/_widgets.scss */
   .social_widget article .icon_stamp.fb {
     background-image: url("../images/fb_icon2x.png");
     background-size: 60px 70px;
   }
+}
+
+/* line 96, ../sass/_widgets.scss */
+.button.view_all_more_button {
+  width: 206px;
 }
 
 /* line 4, ../sass/_sponsors.scss */
