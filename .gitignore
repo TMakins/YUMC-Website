@@ -1,0 +1,5 @@
+#PHP Storm
+.idea/
+
+#SASS cached files
+.sass-cache/
