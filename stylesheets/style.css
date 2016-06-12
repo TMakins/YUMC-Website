@@ -5,6 +5,13 @@
  *  ----------------------
  *  CSS/SASS: Main CSS styles used by most of the theme
  */
+/*
+ *  Copyright York University Mountaineering Club 2016
+ *
+ *  _base.scss
+ *  ----------
+ *  Sass: contains mixins etc
+ */
 @import url("default.css");
 /* lato-300 - latin */
 @font-face {
