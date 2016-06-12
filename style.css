@@ -1,0 +1,23 @@
+/*
+Theme Name: YUMC
+Theme URI: https://github.com/TMakins/YUMC-Website
+Author: Toby Makins
+Author URI: http://www.makins.org.uk
+Description: Theme created in 2016 for the York University Mountaineering Club.
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags:
+
+YUMC is based on Underscores http://underscores.me/, (C) 2012-2016 Automattic, Inc.
+Underscores is distributed under the terms of the GNU GPL v2 or later.
+
+Additional files not originally part of the Underscores theme that are not derived from
+WordPress itself (including images and stylesheets), are not licensed under GPL or any
+other license.
+
+All files not licensed under GPL are Copyright (C) 2016 York University Mountaineering Club.
+*/
+
+
+@import url('stylesheets/style.css');

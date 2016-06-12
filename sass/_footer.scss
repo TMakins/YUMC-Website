@@ -1,0 +1,27 @@
+@import "base";
+
+footer#page-footer {
+  background: $secondary-colour;
+  margin-top: 100px;
+}
+
+footer#page-footer small {
+  color: $secondary-semi-contrast-colour;
+  font-size: 14px;
+  font-weight: 300;
+  padding: 15px 0 19px 0;
+  display: block;
+  text-align: center;
+}
+
+footer#page-footer div.nav-container {
+  border-bottom: 1px solid $tertiary-colour;
+
+  nav {
+    text-align: center;
+
+    ul {
+      float: none;
+    }
+  }
+}

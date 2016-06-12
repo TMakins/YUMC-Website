@@ -1,0 +1,29 @@
+@import "base";
+
+header#masthead {
+  padding-top: 419px; //nav bar 1px overlap
+  position: relative;
+}
+
+header#masthead .nav-container {
+  position: relative;
+  z-index: 2; //above image, below logo
+}
+
+header#masthead #header-image {
+  position: absolute;
+  top: 0;
+}
+
+h1#logo {
+  margin: 0;
+  @include hide-text(left);
+  background: url('../images/yumc-logo.png') no-repeat;
+  @include image-2x('../images/yumc-logo.png');
+  width: image-width('../images/yumc-logo.png');
+  height: image-height('../images/yumc-logo.png');
+  position: absolute;
+  top: 220px;
+  left: 50px;
+  z-index: 3;
+}

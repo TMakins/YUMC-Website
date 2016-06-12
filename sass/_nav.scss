@@ -1,0 +1,48 @@
+@import "base";
+
+//Navigation menu
+div.nav-container {
+  background: $secondary-colour;
+  nav {
+    height: 50px;
+
+      ul {
+        display: inline-block;
+        list-style-type: none;
+        float: right;
+        height: 50px;
+        margin: 0 31px 0 0; //50px - 19px
+
+        li {
+          height: 50px;
+          float: left;
+          @include transition(all 0.4s);
+
+          a {
+            display: block;
+            padding: 17px 19px 22px 19px;
+            font-size: 16px;
+            line-height: 11px;
+            text-decoration: none;
+            color: $secondary-contrast-colour;
+          }
+        }
+
+        li.current_page_item,
+        li.current_page_item {
+          background: $tertiary-colour;
+
+          a {
+            padding-bottom: 19px;
+            border-bottom: 3px solid $primary-colour;
+            color: $tertiary-contrast-colour;
+          }
+        }
+
+        li:hover {
+          background: $tertiary-colour;
+          @include transition(all 0.4s);
+        }
+      }
+  }
+}

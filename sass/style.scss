@@ -1,0 +1,105 @@
+/*
+ *  Copyright York University Mountaineering Club 2016
+ *
+ *  style.scss
+ *  ----------
+ *  Sass: main styles used by most of the theme
+ */
+
+@import "base";
+
+
+html {
+  background: #e6e6e6;
+}
+
+body {
+  width: 1200px;
+  margin: 40px auto 80px;
+  font-family: $lato-font-stack;
+  background: #ffffff;
+  font-size: 14px;
+}
+
+#{headings(all)} {
+  font-family: $raleway-font-stack;
+  color: $headings-colour;
+  margin-top: 30px;
+
+
+  a, a:visited {
+    color: $headings-colour;
+  }
+
+  a:hover {
+    color: $primary-colour;
+
+  }
+}
+
+h1 {
+  font-size: 36px;
+  line-height: 38px;
+}
+
+h2 {
+  font-size: 24px;
+  line-height: 26px;
+}
+
+.separator {
+  margin-top: 90px;
+  span {
+    display: block;
+    background: $faint-line-colour;
+    height: 1px;
+  }
+}
+
+p {
+  margin: 0 0 18px 0;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+.button {
+  font-size: 16px;
+  line-height: 45px;
+  background: $primary-colour;
+  color: $primary-contrast-colour;
+  padding: 0 60px;
+  display: inline-block;
+}
+
+.button:hover {
+  filter: alpha(opacity=0.8);
+  color: $primary-contrast-colour;
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+//Misc styles
+@import "misc";
+
+//Header
+@import "header";
+
+//Nav
+@import "nav";
+
+//Articles
+@import "articles";
+
+//Committee
+@import "committee";
+
+//Widgets
+@import "widgets";
+
+//Sponsors
+@import "sponsors";
+
+//Footer
+@import "footer";

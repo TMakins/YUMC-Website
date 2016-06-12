@@ -1,0 +1,64 @@
+@import "base";
+
+article, section {
+  padding-top: 90px;
+  font-family: $lato-font-stack;
+  font-size: 14.2px;
+  line-height: 20px;
+  letter-spacing: 0.1px;
+  color: $body-font-colour;
+}
+
+h1.page-title, h1.entry-title {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 60px;
+  font-size: 39px;
+  line-height: 40px;
+}
+
+.page-title-underline {
+  display: block;
+  width: 140px;
+  margin: 20px auto;
+  height: 3px;
+  background: $primary-colour;
+}
+
+h2.page-title, h2.entry-title {
+  margin-top: 0;
+  margin-bottom: 40px;
+}
+
+a {
+  color: $primary-colour;
+  @include transition(all, 0.4s);
+  text-decoration: none;
+}
+
+a:hover {
+  color: $secondary-colour;
+  @include transition(all, 0.4s);
+}
+
+.frontpage-content {
+  text-align: center;
+}
+
+.entry-thumb img {
+  @include opacity(1);
+  transition: all, 0.4s;
+}
+
+.entry-thumb img:hover {
+  @include opacity(0.8);
+  transition: all, 0.4s;
+}
+
+article.larger_post {
+  padding-top: 0;
+}
+
+article.smaller_post {
+  padding-top: 60px;
+}

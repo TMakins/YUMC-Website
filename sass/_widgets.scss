@@ -1,0 +1,80 @@
+@import "base";
+
+.widget {
+  h2.entry-title {
+    font-size: 24px;
+    line-height: 25px;
+    margin-top: 0;
+  }
+}
+
+.calender_widget {
+  article {
+    margin-bottom: 18px;
+    background: $secondary-colour;
+    color: $secondary-contrast-colour;
+
+    h4 {
+      font-weight: 400;
+      font-family: $lato-font-stack;
+      font-size: 16px;
+      color: $secondary-contrast-colour;
+      margin-top: 13px;
+      margin-bottom: 3px;
+    }
+
+    p {
+      margin: 0;
+      padding-right: 20px;
+    }
+
+    .date_stamp {
+      font-weight: 300;
+      height: 70px;
+      width: 60px;
+      background: $primary-colour;
+      color: $primary-contrast-colour;
+
+      .day {
+        display: block;
+        margin-top: 10px;
+        font-size: 24px;
+        line-height: 29px;
+      }
+
+      .month {
+        display: block;
+        margin-bottom: 26px;
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+.social_widget {
+  article {
+    margin-bottom: 18px;
+    outline: 1px solid $faint-line-colour;
+
+    p {
+      padding-right: 20px;
+      margin: 15px 0;
+      font-style: italic;
+    }
+
+    .icon_stamp {
+      height: 70px;
+      width: 60px;
+    }
+
+    .icon_stamp.twitter {
+      background: #55acee url('../images/twitter_icon.png') no-repeat;
+      @include image-2x('../images/twitter_icon2x.png');
+    }
+
+    .icon_stamp.fb {
+      background: #3b5998 url('../images/fb_icon.png') no-repeat;
+      @include image-2x('../images/fb_icon2x.png');
+    }
+  }
+}

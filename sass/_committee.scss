@@ -1,0 +1,30 @@
+@import "base";
+
+#committee {
+  .committee-member {
+    padding-top: 0px;
+
+    .photo {
+      background: #f1f1f1;
+      width: 220px;
+      height: 220px;
+      overflow: hidden;
+      @include border-radius(110px);
+    }
+
+    h1.name {
+      color: $body-font-colour;
+      font-family: $lato-font-stack;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 16px;
+      margin: 25px 0 0 0;
+    }
+
+    p {
+      font-style: italic;
+      font-size: 14px;
+      margin-bottom: 80px;
+    }
+  }
+}

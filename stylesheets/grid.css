@@ -1,0 +1,231 @@
+.grid_1 {
+    POSITION: relative; DISPLAY: inline; FLOAT: left; MARGIN-LEFT: 10px; MARGIN-RIGHT: 10px
+}
+.grid_2 {
+    POSITION: relative; DISPLAY: inline; FLOAT: left; MARGIN-LEFT: 10px; MARGIN-RIGHT: 10px
+}
+.grid_3 {
+    POSITION: relative; DISPLAY: inline; FLOAT: left; MARGIN-LEFT: 10px; MARGIN-RIGHT: 10px
+}
+.grid_4 {
+    POSITION: relative; DISPLAY: inline; FLOAT: left; MARGIN-LEFT: 10px; MARGIN-RIGHT: 10px
+}
+.grid_5 {
+    POSITION: relative; DISPLAY: inline; FLOAT: left; MARGIN-LEFT: 10px; MARGIN-RIGHT: 10px
+}
+.grid_6 {
+    POSITION: relative; DISPLAY: inline; FLOAT: left; MARGIN-LEFT: 10px; MARGIN-RIGHT: 10px
+}
+.grid_7 {
+    POSITION: relative; DISPLAY: inline; FLOAT: left; MARGIN-LEFT: 10px; MARGIN-RIGHT: 10px
+}
+.grid_8 {
+    POSITION: relative; DISPLAY: inline; FLOAT: left; MARGIN-LEFT: 10px; MARGIN-RIGHT: 10px
+}
+.grid_9 {
+    POSITION: relative; DISPLAY: inline; FLOAT: left; MARGIN-LEFT: 10px; MARGIN-RIGHT: 10px
+}
+.grid_10 {
+    POSITION: relative; DISPLAY: inline; FLOAT: left; MARGIN-LEFT: 10px; MARGIN-RIGHT: 10px
+}
+.grid_11 {
+    POSITION: relative; DISPLAY: inline; FLOAT: left; MARGIN-LEFT: 10px; MARGIN-RIGHT: 10px
+}
+.grid_12 {
+    POSITION: relative; DISPLAY: inline; FLOAT: left; MARGIN-LEFT: 10px; MARGIN-RIGHT: 10px
+}
+.grid_15 {
+    POSITION: relative; DISPLAY: inline; FLOAT: left; MARGIN-LEFT: 10px; MARGIN-RIGHT: 10px
+}
+.alpha {
+    MARGIN-LEFT: 0px
+}
+.omega {
+    MARGIN-RIGHT: 0px
+}
+body .grid_1 {
+    WIDTH: 60px
+}
+body .grid_2 {
+    WIDTH: 140px
+}
+body .grid_3 {
+    WIDTH: 220px
+}
+body .grid_4 {
+    WIDTH: 300px
+}
+body .grid_5 {
+    WIDTH: 380px
+}
+body .grid_6 {
+    WIDTH: 460px
+}
+body .grid_7 {
+    WIDTH: 540px
+}
+body .grid_8 {
+    WIDTH: 620px
+}
+body .grid_9 {
+    WIDTH: 700px
+}
+body .grid_10 {
+    WIDTH: 780px
+}
+body .grid_11 {
+    WIDTH: 860px
+}
+body .grid_12 {
+    WIDTH: 940px
+}
+body .grid_15 {
+    WIDTH: 1180px
+}
+body .prefix_1 {
+    PADDING-LEFT: 80px
+}
+body .prefix_2 {
+    PADDING-LEFT: 160px
+}
+body .prefix_3 {
+    PADDING-LEFT: 240px
+}
+body .prefix_4 {
+    PADDING-LEFT: 320px
+}
+body .prefix_5 {
+    PADDING-LEFT: 400px
+}
+body .prefix_6 {
+    PADDING-LEFT: 480px
+}
+body .prefix_7 {
+    PADDING-LEFT: 560px
+}
+body .prefix_8 {
+    PADDING-LEFT: 640px
+}
+body .prefix_9 {
+    PADDING-LEFT: 720px
+}
+body .prefix_10 {
+    PADDING-LEFT: 800px
+}
+body .prefix_11 {
+    PADDING-LEFT: 880px
+}
+body .suffix_1 {
+    PADDING-RIGHT: 80px
+}
+body .suffix_2 {
+    PADDING-RIGHT: 160px
+}
+body .suffix_3 {
+    PADDING-RIGHT: 240px
+}
+body .suffix_4 {
+    PADDING-RIGHT: 320px
+}
+body .suffix_5 {
+    PADDING-RIGHT: 400px
+}
+body .suffix_6 {
+    PADDING-RIGHT: 480px
+}
+body .suffix_7 {
+    PADDING-RIGHT: 560px
+}
+body .suffix_8 {
+    PADDING-RIGHT: 640px
+}
+body .suffix_9 {
+    PADDING-RIGHT: 720px
+}
+body .suffix_10 {
+    PADDING-RIGHT: 800px
+}
+body .suffix_11 {
+    PADDING-RIGHT: 880px
+}
+body .push_1 {
+    LEFT: 80px
+}
+body .push_2 {
+    LEFT: 160px
+}
+body .push_3 {
+    LEFT: 240px
+}
+body .push_4 {
+    LEFT: 320px
+}
+body .push_5 {
+    LEFT: 400px
+}
+body .push_6 {
+    LEFT: 480px
+}
+body .push_7 {
+    LEFT: 560px
+}
+body .push_8 {
+    LEFT: 640px
+}
+body .push_9 {
+    LEFT: 720px
+}
+body .push_10 {
+    LEFT: 800px
+}
+body .push_11 {
+    LEFT: 880px
+}
+body .pull_1 {
+    LEFT: -80px
+}
+body .pull_2 {
+    LEFT: -160px
+}
+body .pull_3 {
+    LEFT: -240px
+}
+body .pull_4 {
+    LEFT: -320px
+}
+body .pull_5 {
+    LEFT: -400px
+}
+body .pull_6 {
+    LEFT: -480px
+}
+body .pull_7 {
+    LEFT: -560px
+}
+body .pull_8 {
+    LEFT: -640px
+}
+body .pull_9 {
+    LEFT: -720px
+}
+body .pull_10 {
+    LEFT: -800px
+}
+body .pull_11 {
+    LEFT: -880px
+}
+.clear {
+    WIDTH: 0px; DISPLAY: block; HEIGHT: 0px; VISIBILITY: hidden; CLEAR: both; OVERFLOW: hidden
+}
+.clearfix:after {
+    LINE-HEIGHT: 0; WIDTH: 0px; DISPLAY: block; HEIGHT: 0px; VISIBILITY: hidden; CLEAR: both; FONT-SIZE: 0px; CONTENT: ' '
+}
+.clearfix {
+    DISPLAY: inline-block
+}
+* HTML .clearfix {
+    HEIGHT: 1%
+}
+.clearfix {
+    DISPLAY: block
+}

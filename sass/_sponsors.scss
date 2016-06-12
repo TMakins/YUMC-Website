@@ -1,0 +1,24 @@
+@import "base";
+
+#sponsors {
+  img {
+    width: auto;
+    height: auto;
+    max-width: 165px;
+    max-height: 90px;
+    margin: 0 auto;
+    @include grayscale();
+    zoom: 1;
+    filter: alpha(opacity=55);
+    opacity: 0.55;
+    @include transition(all, 0.8s);
+  }
+
+  img:hover {
+    @include grayscale(off);
+    filter: alpha(opacity=100);
+    opacity: 1;
+    @include transition(all, 0.8s);
+    cursor: pointer;
+  }
+}
