@@ -11,6 +11,7 @@
  */
 
 define("CONTENT_WIDTH", 860);
+define("FB_ACCESS_TOKEN", "EAAPJBDecPHABAC1cBOmfPZATdb87Gr38lexC2JEFanlZARB3SvtYjxpBWKnQW0DbrVZCz2bZBCbhnBHeISTaG9iVQ2wgN5fVUsJ3ZABDQW3HE2U4RAeBzfj7eDfooJUk7R0ePjK15vfZCCIyri3gTfpPXPx1e0PpiReBqC4EEIthQZC4jvVfSnb");
 
 
 /*
@@ -116,6 +117,10 @@ function yumc_image_sizes() {
 }
 add_action( 'after_setup_theme', 'yumc_image_sizes' );
 
+function parse_fb_timestamp($fb_timestamp){
+	return new DateTime($fb_timestamp);
+}
+
 /*
  *  Shortens the excerpt to a given length
  */
@@ -127,6 +132,14 @@ function yumc_the_excerpt( $length ) {
 		$string = substr( $string, 0, strpos( $string, "\n" ) );
 	}
 	echo $string . ' [...]';
+}
+
+/*
+ *	Does a JSON Get request to get facebook events from the YUMC page
+ */
+function get_facebook_events() {
+	$fb_events_json = file_get_contents("https://graph.facebook.com/ClimbingYork/events?access_token=" . FB_ACCESS_TOKEN);
+	return json_decode($fb_events_json, true)["data"];
 }
 
 /*
