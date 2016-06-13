@@ -75,10 +75,13 @@ p:last-child {
 }
 
 .button:hover {
-  filter: alpha(opacity=0.8);
   color: $primary-contrast-colour;
-  opacity: 0.8;
   cursor: pointer;
+  @include opacity(0.8);
+}
+
+.button:visited {
+  color: $primary-contrast-colour;
 }
 
 //Misc styles

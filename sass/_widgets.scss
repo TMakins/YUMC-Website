@@ -10,28 +10,12 @@
 }
 
 .calender_widget {
-  article {
+  .widget_entry {
     margin-top: 0px;
     margin-bottom: 18px;
-    background: $secondary-colour;
     color: $secondary-contrast-colour;
     height: 70px;
-
-    h4 {
-      font-weight: 400;
-      font-family: $lato-font-stack;
-      font-size: 16px;
-      color: $secondary-contrast-colour;
-      margin-top: 13px;
-      margin-bottom: 3px;
-      display: inline-block;
-    }
-
-    p {
-      margin: 0;
-      padding-right: 20px;
-      display: inline-block;
-    }
+    display: block;
 
     .date_stamp {
       font-weight: 300;
@@ -40,8 +24,9 @@
       background: $primary-colour;
       color: $primary-contrast-colour;
       float: left;
-      margin-right: 20px;
       text-align: center;
+      @include opacity(1);
+      transition: all, 0.4s;
 
       .day {
         display: block;
@@ -56,15 +41,50 @@
         font-size: 14px;
       }
     }
+
+    .content {
+      background: $secondary-colour;
+      height: 70px;
+      padding-left: 20px;
+      overflow:hidden;
+
+      h4 {
+        font-weight: 400;
+        font-family: $lato-font-stack;
+        font-size: 16px;
+        color: $secondary-contrast-colour;
+        margin-top: 13px;
+        margin-bottom: 3px;
+        display: inline-block;
+      }
+
+      p {
+        margin: 0;
+        padding-right: 20px;
+      }
+    }
+  }
+
+  .widget_entry:visited  {
+    color: $secondary-contrast-colour;
+  }
+
+  .widget_entry:hover {
+    .date_stamp {
+      @include opacity(0.8);
+      transition: all, 0.4s;
+    }
   }
 }
 
 .social_widget {
-  article {
+  .widget_entry  {
     margin-top: 0px;
     margin-bottom: 18px;
     outline: 1px solid $faint-line-colour;
+    color: $body-font-colour;
     height: 70px;
+    display: block;
 
     p {
       margin-top: 13px;
@@ -79,6 +99,8 @@
       width: 60px;
       float: left;
       margin-right: 20px;
+      @include opacity(1);
+      transition: all, 0.4s;
     }
 
     .icon_stamp.twitter {
@@ -89,6 +111,17 @@
     .icon_stamp.fb {
       background: #3b5998 url('../images/fb_icon.png') no-repeat;
       @include image-2x('../images/fb_icon2x.png');
+    }
+  }
+
+  .widget_entry:visited {
+    color: $body-font-colour;
+  }
+
+  .widget_entry:hover {
+    .icon_stamp {
+      @include opacity(0.8);
+      transition: all, 0.4s;
     }
   }
 }
