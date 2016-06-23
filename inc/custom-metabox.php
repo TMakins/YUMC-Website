@@ -7,7 +7,8 @@ class Custom_Metabox {
     private $mb_id;
     private $title;
     private $post_type;
-    public $html;
+    public $html_content;
+    public $fields;
 
     /*
      *  Constructor.
@@ -46,7 +47,14 @@ class Custom_Metabox {
     public function metabox_html( $post ) {
         // Add nonce for security and authentication.
         wp_nonce_field( $this->mb_id . '_nonce_action', $this->mb_id . '_nonce' );
-        echo $this->html;
+       
+        foreach($this->html_content as $content)
+        {
+            echo $content['before'];
+            if( get_post_meta( $post->ID, $content['field_id'], true ) )
+                echo get_post_meta( $post->ID, $content['field_id'], true );
+            echo $content['after'];
+        }
     }
 
     /*
@@ -74,6 +82,11 @@ class Custom_Metabox {
 
         if ( wp_is_post_revision( $post_id ) ) {
             return;
+        }
+
+        foreach($this->fields as $field) {
+            $s_field = sanitize_text_field($_POST[$field]);
+            update_post_meta($post_id, $field, $s_field);
         }
     }
 }

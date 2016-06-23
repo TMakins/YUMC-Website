@@ -204,7 +204,23 @@ add_action( 'init', 'yumc_register_post_types' );
 
 function yumc_setup_events_post_type() {
 	$event_date_mb = new Custom_Metabox('yumc-event-date', 'Event Date/Time', 'yumc_events');
-	$event_date_mb->html = '<p>Test</p>';
+	$event_date_mb->fields = array(
+		'yumc_event_date',
+		'yumc_event_time',
+	);
+	$event_date_mb->html_content =
+		array (
+			array(
+				'field_id'	=> 'yumc_event_date',
+				'before'	=> '<p><label for="yumc_event_date">Date:</label>&emsp;<input type="text" id="yumc_event_date" name="yumc_event_date" value="',
+				'after'		=> '"></p>'
+			),
+			array(
+				'field_id'	=> 'yumc_event_time',
+				'before'	=> '<p><label for="yumc_event_time">Time:</label>&emsp;<input type="text" id="yumc_event_time" name="yumc_event_time" value="',
+				'after'		=> '"></p>'
+			),
+		);
 	$event_date_mb->init();
 }
 add_action( 'admin_init', 'yumc_setup_events_post_type' );
