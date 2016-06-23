@@ -7,7 +7,7 @@
 ?>
 
 <?php
-$fb_events = get_facebook_events();
+$fb_events = get_facebook_events(2);
 
 foreach($fb_events as $event)
 {
@@ -16,18 +16,28 @@ foreach($fb_events as $event)
             'title'     => $event["name"],
             'location'  => $event["place"]["name"],
             'url'       => "https://www.facebook.com/events/" . $event["id"],
-            'origin'     => "fb",
+            'origin'    => "fb",
         );
 }
 
-/*
-foreach($events_array as $event)
+$args = array(
+    'post_status'    => 'publish',
+    'post_type'      => 'yumc_event',
+    'meta_key'       => 'yumc_event_timestamp',
+    'orderby'        => 'meta_value_num',
+    'order'          => 'DESC',
+    'posts_per_page' => 2
+);
+
+$site_events = get_posts( $args );
+
+foreach($site_events as $site_event)
 {
-    echo '<h3>' . $event["title"] . '</h3>';
-    echo '<small>' . $event["timestamp"] . ' @ ' . $event["location"] . '</small>';
-    echo '<p>' . $event["description"] . '</p>';
+    $events_array[] = array(
+
+        );
 }
-*/
+
 ?>
 
 <section class="widget calender_widget grid_5">
@@ -47,18 +57,15 @@ foreach($events_array as $event)
             </div>
             <div class="content">
                 <h4><?php echo $event["title"]; ?></h4>
-                <?php if ($event["origin"] != "fb") { ?>
-                    <?php echo '<p>' . $event["description"] . '</p>'; ?>
-                <?php } else { ?>
-                    <p>
-                        <?php
-                        echo $event["timestamp"]->format('g');
-                        if ($event["timestamp"]->format('i') != "00")
-                            echo ':' . $event["timestamp"]->format('i');
-                        echo $event["timestamp"]->format('a') . '.';
-                        ?>
-                        Click to view on Facebook.</p>
-                <?php } ?>
+                <p>
+                    <?php
+                    echo $event["timestamp"]->format('g');
+                    if ($event["timestamp"]->format('i') != "00")
+                        echo ':' . $event["timestamp"]->format('i');
+                    echo $event["timestamp"]->format('a') . '.';
+                    ?>
+                    <?php echo ($event["origin"] == "fb") ? "Click to view on Facebook." : "Click to find out more info."; ?>
+                </p>
             </div>
         </a>
     <?php

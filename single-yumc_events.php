@@ -10,6 +10,8 @@ get_header(); ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 
+			<img src="https://premium.wpmudev.org/blog/wp-content/uploads/2014/09/eventon-wordpress-event-calendar.png" />
+
 		<?php
 		while ( have_posts() ) : the_post();
 
@@ -29,4 +31,5 @@ get_header(); ?>
 	</div><!-- #primary -->
 
 <?php
+get_sidebar();
 get_footer();

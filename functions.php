@@ -13,6 +13,10 @@
 define("CONTENT_WIDTH", 860);
 define("FB_ACCESS_TOKEN", "EAAPJBDecPHABAC1cBOmfPZATdb87Gr38lexC2JEFanlZARB3SvtYjxpBWKnQW0DbrVZCz2bZBCbhnBHeISTaG9iVQ2wgN5fVUsJ3ZABDQW3HE2U4RAeBzfj7eDfooJUk7R0ePjK15vfZCCIyri3gTfpPXPx1e0PpiReBqC4EEIthQZC4jvVfSnb");
 
+/*
+ *	Classes
+ */
+require_once get_template_directory() . '/inc/custom-metabox.php';
 
 /*
  *	Functions
@@ -137,10 +141,105 @@ function yumc_the_excerpt( $length ) {
 /*
  *	Does a JSON Get request to get facebook events from the YUMC page
  */
-function get_facebook_events() {
-	$fb_events_json = file_get_contents("https://graph.facebook.com/ClimbingYork/events?access_token=" . FB_ACCESS_TOKEN);
+function get_facebook_events( $num_events = null ) {
+	if( $num_events )
+		$fb_events_json = file_get_contents("https://graph.facebook.com/ClimbingYork/events?access_token=" . FB_ACCESS_TOKEN);
+	else
+		$fb_events_json = file_get_contents("https://graph.facebook.com/ClimbingYork/events?access_token=" . FB_ACCESS_TOKEN . "&limit=" . $num_events);
 	return json_decode($fb_events_json, true)["data"];
 }
+
+/*
+ *	Creates all custom post types for the theme. These are:
+ * 		-	Events post type
+ */
+function yumc_register_post_types() {
+	$labels = array(
+		'name'                  => 'Events',
+		'singular_name'         => 'Event',
+		'menu_name'             => 'Events',
+		'name_admin_bar'        => 'Events',
+		'add_new'               => 'Add New',
+		'add_new_item'          => 'Add New Event',
+		'new_item'              => 'New Event',
+		'edit_item'             => 'Edit Event',
+		'view_item'             => 'View Event',
+		'all_items'             => 'All Events',
+		'search_items'          => 'Search Events',
+		'parent_item_colon'     => 'Parennt Event:',
+		'not_found'             => 'No events found.',
+		'not_found_in_trash'    => 'No events found in the Bin.',
+		'featured_image'        => 'Event Image',
+		'set_featured_image'    => 'Set event image',
+		'remove_featured_image' => 'Remove event image',
+		'use_featured_image'    => 'Use as event image',
+		'archives'              => 'Event archives',
+		'insert_into_item'      => 'Insert into event',
+		'uploaded_to_this_item' => 'Uploaded to this event',
+		'filter_items_list'     => 'Filter events list',
+		'items_list_navigation' => 'Events list navigation',
+		'items_list'            => 'Events list',
+	);
+
+	$args = array(
+		'labels'             => $labels,
+		'public'             => true,
+		'publicly_queryable' => true,
+		'show_ui'            => true,
+		'show_in_menu'       => true,
+		'query_var'          => true,
+		'rewrite'            => array( 'slug' => 'event' ),
+		'capability_type'    => 'post',
+		'has_archive'        => true,
+		'hierarchical'       => false,
+		'menu_position'      => null,
+		'supports'           => array( 'title', 'thumbnail', 'editor' ),
+		'menu_icon' 		 => 'dashicons-calendar',
+		'menu_position'		 => 20,
+	);
+
+	register_post_type( 'yumc_events', $args );
+}
+add_action( 'init', 'yumc_register_post_types' );
+
+function yumc_setup_events_post_type() {
+	$event_date_mb = new Custom_Metabox('yumc-event-date', 'Event Date/Time', 'yumc_events');
+	$event_date_mb->html = '<p>Test</p>';
+	$event_date_mb->init();
+}
+add_action( 'admin_init', 'yumc_setup_events_post_type' );
+
+/*
+ *	Changes login logo
+ */
+function yumc_login_logo() { ?>
+	<style type="text/css">
+		.login #login {
+			width: 580px;
+		}
+		#login h1 {
+			float: left;
+			margin-right: 40px;
+		}
+		#login p#nav {
+			clear: both;
+			text-align: right;
+		}
+		#login p#backtoblog {
+			display: none;
+		}
+
+		#login h1 a, .login h1 a {
+			background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/images/yumc-logo.png);
+			height: 300px;
+			width: 220px;
+			-webkit-background-size: 220px;
+			background-size: 220px;
+			margin: 0;
+		}
+	</style>
+<?php }
+add_action( 'login_enqueue_scripts', 'yumc_login_logo' );
 
 /*
  *	Implement the Custom Header feature.
