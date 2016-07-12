@@ -5,16 +5,11 @@
  *  PHP: Template for displaying the block page.
  */
 ?>
-	<article id="post-<?php the_ID(); ?>" <?php post_class( ($post_count < 2) ? 'grid_5 larger_post' : 'grid_3 smaller_post' ); ?>>
+	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 		<a class="entry-thumb" href="<?php echo esc_url( get_permalink() ) ?>">
 			<?php
 			if ( has_post_thumbnail() ) {
 				the_post_thumbnail( '380-253-thumb' );
-			}
-			else {
-				?>
-				<img src="<?php echo get_template_directory_uri(); ?>/images/placeholder.jpg" alt="No image" />
-				<?php
 			}
 			?>
 		</a>
@@ -40,10 +35,7 @@
 					the_content();
 				}
 				else {
-					if( $post_count < 2 )
-						yumc_the_excerpt(100);
-					else
-						yumc_the_excerpt(50);
+					yumc_the_excerpt(100);
 				}
 
 				/*
@@ -60,20 +52,6 @@
 			<?php yumc_entry_footer(); ?>
 		</footer><!-- .entry-footer -->
 	</article><!-- #post-## -->
-	<?php
-	if( $post_count == 0 || ( $post_count > 1 && ( $post_count - 1 ) % 3 != 0 ) ):
-	?>
-		<div class="grid_1">&nbsp;</div>
-	<?php
-	endif;
-	?>
-	<?php
-	if( $post_count == 1 || ( $post_count - 1) % 3 == 0 ):
-		?>
-		<div class="clearfix"></div>
-		<?php
-	endif;
-	?>
 <?php
 $post_count++;
 ?>

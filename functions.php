@@ -121,8 +121,12 @@ function yumc_image_sizes() {
 }
 add_action( 'after_setup_theme', 'yumc_image_sizes' );
 
-function parse_fb_timestamp($fb_timestamp){
+function yumc_parse_fb_timestamp( $fb_timestamp ){
 	return new DateTime($fb_timestamp);
+}
+
+function yumc_parse_event_timestamp( $yumc_event_timestamp ){
+	return DateTime::createFromFormat( 'U', $yumc_event_timestamp );
 }
 
 /*
@@ -141,7 +145,7 @@ function yumc_the_excerpt( $length ) {
 /*
  *	Does a JSON Get request to get facebook events from the YUMC page
  */
-function get_facebook_events( $num_events = null ) {
+function yumc_get_facebook_events( $num_events = null ) {
 	if( $num_events )
 		$fb_events_json = file_get_contents("https://graph.facebook.com/ClimbingYork/events?access_token=" . FB_ACCESS_TOKEN);
 	else
@@ -207,6 +211,7 @@ function yumc_setup_events_post_type() {
 	$event_date_mb->fields = array(
 		'yumc_event_date',
 		'yumc_event_time',
+		'yumc_event_unix_timestamp',
 	);
 	$event_date_mb->html_content =
 		array (
@@ -218,6 +223,11 @@ function yumc_setup_events_post_type() {
 			array(
 				'field_id'	=> 'yumc_event_time',
 				'before'	=> '<p><label for="yumc_event_time">Time:</label>&emsp;<input type="text" id="yumc_event_time" name="yumc_event_time" value="',
+				'after'		=> '"></p>'
+			),
+			array(
+				'field_id'	=> 'yumc_event_unix_timestamp',
+				'before'	=> '<p><label for="yumc_event_time">Unix Timestamp:</label>&emsp;<input type="text" readonly style="id="yumc_event_unix_timestamp" name="yumc_event_unix_timestamp" value="',
 				'after'		=> '"></p>'
 			),
 		);

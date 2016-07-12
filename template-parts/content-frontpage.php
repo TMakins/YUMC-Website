@@ -32,7 +32,7 @@
     ?>
 </article><!-- #post-## -->
 
-<div class="separator prefix_1 suffix_1"><span class="grid_9"></span></div>
+<div class="separator prefix_2 suffix_2"><span class="grid_7"></span></div>
 
 <?php include( locate_template( 'template-parts/widgets/calendar.php' ) ); ?>
 
