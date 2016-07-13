@@ -3,6 +3,8 @@
  *  calendar.php
  *  ------------
  *  PHP: Calendar/events widget for the front page
+ *
+ *  TO-DO: Add caching
  */
 ?>
 
@@ -10,15 +12,13 @@
 $fb_events = yumc_get_facebook_events(2);
 
 foreach($fb_events as $event) {
-    if ( yumc_parse_fb_timestamp( $event["start_time"] ) > new DateTime() ){
-        $events_array[] = array(
-            'timestamp' => yumc_parse_fb_timestamp($event["start_time"]),
-            'title' => $event["name"],
-            'location' => $event["place"]["name"],
-            'url' => "https://www.facebook.com/events/" . $event["id"],
-            'origin' => "fb",
-        );
-    }
+    $events_array[] = array(
+        'timestamp' => yumc_parse_fb_timestamp($event["start_time"]),
+        'title' => $event["name"],
+        'location' => $event["place"]["name"],
+        'url' => "https://www.facebook.com/events/" . $event["id"],
+        'origin' => "fb",
+    );
 }
 
 $args = array(
@@ -39,7 +39,7 @@ foreach($site_events as $site_event)
             'timestamp' => yumc_parse_event_timestamp(get_post_meta($site_event->ID, 'yumc_event_unix_timestamp', true)),
             'title' => $site_event->post_title,
             'location' => "temp",
-            'url' => get_permalink($site_event),
+            'url' => rtrim( get_post_type_archive_link( 'yumc_events' ), '/' ) . '#event-' . $site_event->ID,
             'origin' => "wp",
         );
     }

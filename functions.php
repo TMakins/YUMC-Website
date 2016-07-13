@@ -12,6 +12,10 @@
 
 define("CONTENT_WIDTH", 860);
 define("FB_ACCESS_TOKEN", "EAAPJBDecPHABAC1cBOmfPZATdb87Gr38lexC2JEFanlZARB3SvtYjxpBWKnQW0DbrVZCz2bZBCbhnBHeISTaG9iVQ2wgN5fVUsJ3ZABDQW3HE2U4RAeBzfj7eDfooJUk7R0ePjK15vfZCCIyri3gTfpPXPx1e0PpiReBqC4EEIthQZC4jvVfSnb");
+define("TWITTER_API_KEY", "z6H7reVnqgExWjdZhRDK8lRon");
+define("TWITTER_API_SECRET", "7whoDFWxKY8t5s3DHbOXmAB0Uyc16JBc1nmpMx5AL5JamiM6bJ");
+define("TWITTER_ACCESS_TOKEN", "210615217-fsRwoB9RV2aU3WDXSL8S4tkEELZrwzsl22dpABbi");
+define("TWITTER_ACCESS_SECRET", "R2s3Y3yayMElfhSNvb8h1wg1wk7a2fc3WMl3ZoQTkQnC2");
 
 /*
  *	Classes
@@ -125,6 +129,10 @@ function yumc_parse_fb_timestamp( $fb_timestamp ){
 	return new DateTime($fb_timestamp);
 }
 
+function yumc_parse_twitter_timestamp( $twitter_timestamp ){
+	return new DateTime($twitter_timestamp);
+}
+
 function yumc_parse_event_timestamp( $yumc_event_timestamp ){
 	return DateTime::createFromFormat( 'U', $yumc_event_timestamp );
 }
@@ -145,13 +153,95 @@ function yumc_the_excerpt( $length ) {
 /*
  *	Does a JSON Get request to get facebook events from the YUMC page
  */
-function yumc_get_facebook_events( $num_events = null ) {
-	if( $num_events )
-		$fb_events_json = file_get_contents("https://graph.facebook.com/ClimbingYork/events?access_token=" . FB_ACCESS_TOKEN);
-	else
-		$fb_events_json = file_get_contents("https://graph.facebook.com/ClimbingYork/events?access_token=" . FB_ACCESS_TOKEN . "&limit=" . $num_events);
-	return json_decode($fb_events_json, true)["data"];
+function yumc_get_facebook_events( $num_events = 30 ) {
+	$fb_events_json = file_get_contents("https://graph.facebook.com/ClimbingYork/events?access_token=" . FB_ACCESS_TOKEN . "&limt=60");
+	$fb_events_obj = json_decode($fb_events_json, true)["data"];
+
+	usort($fb_events_obj, function ($item1, $item2) {
+		if ( yumc_parse_fb_timestamp( $item1["start_time"] ) == yumc_parse_fb_timestamp( $item2["start_time"] ) ) return 0;
+		return yumc_parse_fb_timestamp( $item1["start_time"] ) < yumc_parse_fb_timestamp( $item2["start_time"] ) ? -1 : 1;
+	});
+
+	$fb_events = array();
+	$count = 0;
+	foreach($fb_events_obj as $fb_event)
+	{
+		if(yumc_parse_fb_timestamp( $fb_event["start_time"] ) > new DateTime() && $count < $num_events) {
+			$fb_events[] = $fb_event;
+			$count++;
+		}
+
+		if($count >= $num_events)
+			break;
+	}
+
+	return $fb_events;
 }
+
+/*
+ *	Does a JSON Get request to get facebook posts from the YUMC page, and parses them so only the text based posts are returned
+ */
+function yumc_get_facebook_posts( $num_posts = 50 ) {
+	$fb_posts_json = file_get_contents("https://graph.facebook.com/ClimbingYork/posts?access_token=" . FB_ACCESS_TOKEN);
+	$posts_obj = json_decode($fb_posts_json, true)["data"];
+	$filtered_posts_obj = array();
+	$count = 0;
+	foreach($posts_obj as $post) {
+		if($post["message"] != null && $count < $num_posts) {
+			$filtered_posts_obj[] = $post;
+			$count++;
+		}
+
+		if($count >= $num_posts)
+			break;
+	}
+	return $filtered_posts_obj;
+}
+
+/*
+ *	Does a JSON Get request to get twitter posts from the YUMC account
+ */
+function yumc_get_twitter_posts( $num_posts = 50 ) {
+	$oauth_hash = 'oauth_consumer_key=' . TWITTER_API_KEY . '&';
+	$oauth_hash .= 'oauth_nonce=' . time() . '&';
+	$oauth_hash .= 'oauth_signature_method=HMAC-SHA1&';
+	$oauth_hash .= 'oauth_timestamp=' . time() . '&';
+	$oauth_hash .= 'oauth_token=' . TWITTER_ACCESS_TOKEN . '&';
+	$oauth_hash .= 'oauth_version=1.0';
+	$base = 'GET';
+	$base .= '&';
+	$base .= rawurlencode( 'https://api.twitter.com/1.1/statuses/user_timeline.json' );
+	$base .= '&';
+	$base .= rawurlencode( $oauth_hash );
+	$key = '';
+	$key .= rawurlencode( TWITTER_API_SECRET );
+	$key .= '&';
+	$key .= rawurlencode( TWITTER_ACCESS_SECRET );
+	$signature = base64_encode( hash_hmac( 'sha1', $base, $key, true ) );
+	$signature = rawurlencode($signature);
+
+	$oauth_header = '';
+	$oauth_header .= 'oauth_consumer_key="' . TWITTER_API_KEY . '", ';
+	$oauth_header .= 'oauth_nonce="' . time() . '", ';
+	$oauth_header .= 'oauth_signature="' . $signature . '", ';
+	$oauth_header .= 'oauth_signature_method="HMAC-SHA1", ';
+	$oauth_header .= 'oauth_timestamp="' . time() . '", ';
+	$oauth_header .= 'oauth_token="' . TWITTER_ACCESS_TOKEN . '", ';
+	$oauth_header .= 'oauth_version="1.0", ';
+	$curl_header = array( "Authorization: Oauth {$oauth_header}", 'Expect:' );
+
+	$curl_request = curl_init();
+	curl_setopt( $curl_request, CURLOPT_HTTPHEADER, $curl_header );
+	curl_setopt( $curl_request, CURLOPT_HEADER, false );
+	curl_setopt( $curl_request, CURLOPT_URL, 'https://api.twitter.com/1.1/statuses/user_timeline.json' );
+	curl_setopt( $curl_request, CURLOPT_RETURNTRANSFER, true );
+	curl_setopt( $curl_request, CURLOPT_SSL_VERIFYPEER, false );
+	$json = curl_exec( $curl_request );
+	curl_close( $curl_request );
+
+	return array_slice( json_decode($json, true), 0, $num_posts );
+}
+
 
 /*
  *	Creates all custom post types for the theme. These are:
