@@ -107,8 +107,14 @@ function yumc_scripts() {
 	//Grid CSS
 	wp_enqueue_style( 'yumc-grid', get_template_directory_uri() . '/stylesheets/grid.css' );
 
+	//jquery
+	wp_enqueue_script( 'jquery' );
+
 	// Small screen nav menu, for when the theme is made responsive
 	wp_enqueue_script( 'yumc-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
+
+	//Events dropdown stuff
+	wp_enqueue_script( 'yumc-events', get_template_directory_uri() . '/js/events.js', array( 'jquery' ) );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
