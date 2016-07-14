@@ -10,6 +10,8 @@
 
 <?php
 $fb_events = yumc_get_facebook_events(2);
+$events_array = array();
+
 
 foreach($fb_events as $event) {
     $events_array[] = array(

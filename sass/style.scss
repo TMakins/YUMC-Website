@@ -47,6 +47,11 @@ h2 {
   line-height: 26px;
 }
 
+h4 {
+  font-size: 16px;
+  line-height: 18px;
+}
+
 .separator {
   margin-top: 90px;
   span {
@@ -101,6 +106,9 @@ p:last-child {
 
 //Widgets
 @import "widgets";
+
+//Events
+@import "events";
 
 //Sponsors
 @import "sponsors";

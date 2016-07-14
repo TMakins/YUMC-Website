@@ -9,8 +9,8 @@
   }
 }
 
-.calender_widget {
-  .widget_entry {
+.calender_widget, .event_listing {
+  .widget_entry, .event_entry {
     margin-top: 0px;
     margin-bottom: 18px;
     color: $secondary-contrast-colour;
@@ -47,11 +47,13 @@
       height: 70px;
       padding-left: 20px;
       overflow:hidden;
+      position: relative;
 
-      h4 {
+      h2, h4 {
+        font-size: 16px;
+        line-height: 18px;
         font-weight: 400;
         font-family: $lato-font-stack;
-        font-size: 16px;
         color: $secondary-contrast-colour;
         margin-top: 13px;
         margin-bottom: 3px;
@@ -61,6 +63,15 @@
       p {
         margin: 0;
         padding-right: 20px;
+      }
+
+      .event_drop_down_icon {
+        position: absolute;
+        right: 20px;
+        top: 25px;
+        font-weight: 100;
+        z-index: 2;
+        font-size: 20px;
       }
     }
   }

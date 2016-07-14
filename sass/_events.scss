@@ -1,0 +1,19 @@
+@import "base";
+
+.event_listing {
+  .event_entry {
+    margin-bottom: 0;
+    margin-top: 4px;
+  }
+}
+
+.event_dropdown {
+  display: none;
+  padding: 8px 18px 18px;
+  border: 1px solid $faint-line-colour;
+  border-top: none;
+
+  .event_image {
+    margin-bottom: 18px;
+  }
+}

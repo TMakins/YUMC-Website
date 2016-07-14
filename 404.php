@@ -6,25 +6,16 @@
  */
 
 get_header(); ?>
+	<main id="main" class="site-main grid_16 prefix_2 suffix_2" role="main">
+		<article>
+			<header class="entry-header grid_11 prefix_1 suffix_1">
+				<h1 class="page-title">404 - Page Not Found!<span class="page-title-underline"></span></h1>
+			</header>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
-
-			<section class="error-404 not-found">
-				<header class="page-header">
-					<h1 class="page-title">404 - Page Not Found!!</h1>
-				</header><!-- .page-header -->
-
-				<div class="page-content">
-					<p>Woops, can't find that page. Perhaps you should just give up and go climbing :)</p>
-
-					<!-- To-do: add 404 image -->
-
-				</div><!-- .page-content -->
-			</section><!-- .error-404 -->
-
-		</main><!-- #main -->
-	</div><!-- #primary -->
-
+			<div class="entry-content page-content">
+				<p style="text-align: center;">Sorry, can't find that page. Perhaps you should just give up and go climbing :)</p>
+			</div>
+		</article>
+	</main>
 <?php
 get_footer();
