@@ -13,7 +13,11 @@
 
 		<?php wp_head(); ?>
 	</head>
-	<body <?php body_class() ?>>
+	<body <?php body_class() ?> style="margin-top: 80px;">
+		<div class="global-message-alert">
+			This website is brand new and still being tested, if you see something that's not working properly please let me know by email: <a href="mailto:tem512@york.ac.uk">tem512@york.ac.uk</a>
+		</div>
+
 		<header id="masthead" class="site-header" role="banner">
 			<?php if ( get_header_image() ) { ?>
 				<img id="header-image" src="<?php header_image(); ?>" width="<?php echo esc_attr( get_custom_header()->width ); ?>" height="<?php echo esc_attr( get_custom_header()->height ); ?>" alt="">
@@ -24,7 +28,7 @@
                 <h1 id="logo"><?php bloginfo( "name" ); ?></h1>
             </a>
 			<div class="nav-container">
-				<div class="clearfix"></div>
+				<div class="clear"></div>
 				<nav id="primary-menu" class="grid_16 prefix_4">
 	                <?php
 	                    wp_nav_menu(
@@ -35,6 +39,6 @@
 	                    );
 	                ?>
 				</nav>
-				<div class="clearfix"></div>
+				<div class="clear"></div>
 			</div>
 		</header>

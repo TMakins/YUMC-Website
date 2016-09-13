@@ -5,11 +5,15 @@
  *  PHP: Template for displaying the block page.
  */
 ?>
-	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+	<article id="post-<?php the_ID(); ?>" <?php post_class( "blog " . ((!is_single()) ? "blog-page-post masonry grid_5" : "")); ?>>
 		<a class="entry-thumb" href="<?php echo esc_url( get_permalink() ) ?>">
 			<?php
-			if ( has_post_thumbnail() ) {
+			if ( has_post_thumbnail() && !is_single() ) {
 				the_post_thumbnail( '380-253-thumb' );
+			}
+			else
+			{
+				the_post_thumbnail( '880-440-thumb' );
 			}
 			?>
 		</a>
@@ -24,7 +28,7 @@
 						</div>
 					<?php endif;
 				} else {
-					the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
+					the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a><span class="small-underline"></span></h2>' );
 				}
 			?>
 		</header>
@@ -35,7 +39,7 @@
 					the_content();
 				}
 				else {
-					yumc_the_excerpt(100);
+					the_excerpt();
 				}
 
 				/*
@@ -46,7 +50,12 @@
 				*/
 			?>
 		</div><!-- .entry-content -->
-
+		<?php
+		if( !is_single() )
+		{
+			echo '<div class="separator prefix_1 suffix_1"><span class="grid_3"></span></div>';
+		}
+		?>
 		<!--
 		<footer class="entry-footer">
 			<?php yumc_entry_footer(); ?>

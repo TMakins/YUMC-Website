@@ -135,6 +135,50 @@
       transition: all, 0.4s;
     }
   }
+
+  div.social_button_container {
+    overflow: hidden;
+    position: relative;
+    width: 206px;
+
+    .twitter_button {
+      position: absolute;
+      top: 0;
+      left: -110px;
+      width: 103px;
+      height: 45px;
+      background: #55acee;
+      text-align: center;
+
+      img {
+        width: 40px;
+      }
+    }
+
+    .facebook_button {
+      position: absolute;
+      top: 0;
+      right: -110px;
+      width: 103px;
+      height: 45px;
+      background: #3b5998;
+      text-align: center;
+
+      img {
+        width: 35px;
+      }
+    }
+
+    .twitter_button:hover {
+      background: #77bdf1;
+      transition: all, 0.4s;
+    }
+
+    .facebook_button:hover {
+      background: #7189bb;
+      transition: all, 0.4s;
+    }
+  }
 }
 
 .button.view_all_more_button {

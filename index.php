@@ -18,7 +18,9 @@ get_header(); ?>
 						<span class="page-title-underline"></span>
 					</h1>
 				</header>
+				<div class="clear"></div>
 			</section>
+			<div class="masonry-container">
 		<?php
 		endif;
 		?>
@@ -60,7 +62,12 @@ get_header(); ?>
 			get_template_part( 'template-parts/content', 'none' );
 
 		endif;
-		?>
+
+		if( is_home() && !is_front_page() ) {
+			echo '<div class="clear"></div></div >';
+		}
+
+	?>
 
 	</main><!-- #main -->
 

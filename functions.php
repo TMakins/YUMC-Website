@@ -109,14 +109,23 @@ function yumc_scripts() {
 	//Grid CSS
 	wp_enqueue_style( 'yumc-grid', get_template_directory_uri() . '/stylesheets/grid.css' );
 
+	//Dashicons
+	wp_enqueue_style( 'yumc-dashicons-style', get_stylesheet_directory_uri(), array( 'dashicons' ) );
+
 	//jquery
 	wp_enqueue_script( 'jquery' );
+
+	//Events dropdown stuff
+	wp_enqueue_script( 'yumc-misc', get_template_directory_uri() . '/js/misc.js', array( 'jquery' ) );
 
 	// Small screen nav menu, for when the theme is made responsive
 	wp_enqueue_script( 'yumc-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
 
 	//Events dropdown stuff
 	wp_enqueue_script( 'yumc-events', get_template_directory_uri() . '/js/events.js', array( 'jquery' ) );
+
+	//Masonry
+	wp_enqueue_script( 'yumc-masonry', get_template_directory_uri() . '/js/masonry.pkgd.min.js' );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -131,6 +140,7 @@ function yumc_image_sizes() {
 	add_image_size( '380-thumb', 380 ); // 380 pixels wide (and unlimited height)
 	add_image_size( '380-253-thumb', 380, 253, true ); // Cropped 380 x 253
 	add_image_size( '842-421-thumb', 842, 421, true );
+	add_image_size( '880-440-thumb', 880, 440, true );
 }
 add_action( 'after_setup_theme', 'yumc_image_sizes' );
 
@@ -162,6 +172,16 @@ function yumc_the_excerpt( $length ) {
 	}
 	echo $string . ' [...]';
 }
+
+/*
+ *  Excerpt with read more link
+ */
+function new_excerpt_more($more) {
+	global $post;
+	return '… <p><a href="'. get_permalink($post->ID) . '">' . 'Read More &raquo;' . '</a></p>';
+}
+add_filter('excerpt_more', 'new_excerpt_more');
+
 
 /*
  *	Does a JSON Get request to get facebook events from the YUMC page

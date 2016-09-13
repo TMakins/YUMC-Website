@@ -89,6 +89,25 @@ p:last-child {
   color: $primary-contrast-colour;
 }
 
+.hidden {
+  display: none;
+}
+
+.global-message-alert {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: $primary-contrast-colour;
+  background: $primary-colour;
+  line-height: 40px;
+
+  a {
+    color: $primary-contrast-colour;
+  }
+}
+
 //Misc styles
 @import "misc";
 
@@ -100,6 +119,12 @@ p:last-child {
 
 //Articles
 @import "articles";
+
+//Blog
+@import "blog";
+
+//Comments
+@import "comments";
 
 //Committee
 @import "committee";

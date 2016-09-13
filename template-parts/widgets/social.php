@@ -66,7 +66,15 @@ if( $posts_array ) {
         endforeach;
     endif;
     ?>
-    <a href="" class="button view_all_more_button">
-        View More
-    </a>
+    <div class="social_button_container">
+        <a href="" class="button view_all_more_button">
+            View More
+        </a>
+        <a class="twitter_button" href="https://twitter.com/theyumc" target="_blank">
+            <img src="<?php echo get_template_directory_uri(); ?>/images/twitter_icon.png" alt="Twitter" />
+        </a>
+        <a class="facebook_button" href="https://www.facebook.com/ClimbingYork/" target="_blank">
+            <img src="<?php echo get_template_directory_uri(); ?>/images/fb_icon.png" alt="Facebook" />
+        </a>
+    </div>
 </section>

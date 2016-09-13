@@ -165,6 +165,27 @@ p:last-child {
   color: #ffffff;
 }
 
+/* line 92, ../sass/style.scss */
+.hidden {
+  display: none;
+}
+
+/* line 96, ../sass/style.scss */
+.global-message-alert {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: #ffffff;
+  background: #ff8900;
+  line-height: 40px;
+}
+/* line 106, ../sass/style.scss */
+.global-message-alert a {
+  color: #ffffff;
+}
+
 /* line 3, ../sass/_misc.scss */
 .centre_text {
   text-align: center;
@@ -252,12 +273,12 @@ div.nav-container nav ul li a {
 }
 /* line 31, ../sass/_nav.scss */
 div.nav-container nav ul li.current_page_item,
-div.nav-container nav ul li.current_page_item {
+div.nav-container nav ul li.current-menu-item {
   background: #34383b;
 }
 /* line 35, ../sass/_nav.scss */
 div.nav-container nav ul li.current_page_item a,
-div.nav-container nav ul li.current_page_item a {
+div.nav-container nav ul li.current-menu-item a {
   padding-bottom: 19px;
   border-bottom: 3px solid #ff8900;
   color: #ffffff;
@@ -351,6 +372,133 @@ article.larger_post {
 /* line 62, ../sass/_articles.scss */
 article.smaller_post {
   padding-top: 60px;
+}
+
+/* line 3, ../sass/_blog.scss */
+.masonry-container article.blog-page-post {
+  margin-top: 0;
+  margin-bottom: 40px;
+}
+/* line 7, ../sass/_blog.scss */
+.masonry-container article.blog-page-post .entry-title {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+/* line 12, ../sass/_blog.scss */
+.masonry-container article.blog-page-post .small-underline {
+  display: block;
+  width: 60px;
+  margin: 5px 0;
+  height: 2px;
+  background: #ff8900;
+}
+/* line 20, ../sass/_blog.scss */
+.masonry-container article.blog-page-post .separator {
+  margin-top: 40px;
+}
+
+/* line 26, ../sass/_blog.scss */
+.single-post .blog .entry-thumb img {
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+/* line 31, ../sass/_blog.scss */
+.single-post .blog .separator {
+  margin-top: 90px;
+}
+/* line 35, ../sass/_blog.scss */
+.single-post .blog .entry-meta {
+  color: #222527;
+}
+/* line 38, ../sass/_blog.scss */
+.single-post .blog .entry-meta a {
+  font-style: italic;
+  color: #222527;
+}
+/* line 43, ../sass/_blog.scss */
+.single-post .blog .entry-meta a:hover {
+  color: #ff8900;
+}
+/* line 48, ../sass/_blog.scss */
+.single-post .blog .comments-area {
+  margin-top: 90px;
+}
+
+/* line 2, ../sass/_comments.scss */
+.comments-area .comments-title {
+  margin-bottom: 40px;
+}
+/* line 6, ../sass/_comments.scss */
+.comments-area .comment-list {
+  margin: 0;
+  padding: 0;
+}
+/* line 11, ../sass/_comments.scss */
+.comments-area .comment-list li.comment ol {
+  padding: 0;
+  margin-left: 50px;
+}
+/* line 16, ../sass/_comments.scss */
+.comments-area .comment-list li.comment article.comment-body {
+  margin-top: 0;
+  margin-bottom: 20px;
+  position: relative;
+}
+/* line 21, ../sass/_comments.scss */
+.comments-area .comment-list li.comment article.comment-body .comment-meta {
+  padding-left: 50px;
+}
+/* line 24, ../sass/_comments.scss */
+.comments-area .comment-list li.comment article.comment-body .comment-meta .vcard {
+  line-height: 14px;
+}
+/* line 27, ../sass/_comments.scss */
+.comments-area .comment-list li.comment article.comment-body .comment-meta .vcard img {
+  float: left;
+  margin-left: -50px;
+}
+/* line 33, ../sass/_comments.scss */
+.comments-area .comment-list li.comment article.comment-body .comment-meta .comment-metadata {
+  font-size: 12px;
+}
+/* line 36, ../sass/_comments.scss */
+.comments-area .comment-list li.comment article.comment-body .comment-meta .comment-metadata a {
+  color: #222527;
+}
+/* line 40, ../sass/_comments.scss */
+.comments-area .comment-list li.comment article.comment-body .comment-meta .comment-metadata a.comment-edit-link {
+  color: #ff8900;
+}
+/* line 44, ../sass/_comments.scss */
+.comments-area .comment-list li.comment article.comment-body .comment-meta .comment-metadata a:hover {
+  color: #ff8900;
+}
+/* line 48, ../sass/_comments.scss */
+.comments-area .comment-list li.comment article.comment-body .comment-meta .comment-metadata a.comment-edit-link:hover {
+  color: #222527;
+}
+/* line 54, ../sass/_comments.scss */
+.comments-area .comment-list li.comment article.comment-body .comment-content {
+  margin-top: 10px;
+  padding: 8px;
+  border: 1px solid #d7e8f4;
+  -moz-border-radius: 5px / 5px;
+  -webkit-border-radius: 5px 5px;
+  border-radius: 5px / 5px;
+}
+/* line 61, ../sass/_comments.scss */
+.comments-area .comment-list li.comment article.comment-body .reply {
+  position: absolute;
+  top: 12px;
+  right: 0;
+}
+/* line 66, ../sass/_comments.scss */
+.comments-area .comment-list li.comment article.comment-body .reply a {
+  color: #222527;
+}
+/* line 70, ../sass/_comments.scss */
+.comments-area .comment-list li.comment article.comment-body .reply a:hover {
+  color: #ff8900;
 }
 
 /* line 4, ../sass/_committee.scss */
@@ -528,8 +676,52 @@ article.smaller_post {
   filter: alpha(opacity=80);
   transition: all, 0.4s;
 }
+/* line 139, ../sass/_widgets.scss */
+.social_widget div.social_button_container {
+  overflow: hidden;
+  position: relative;
+  width: 206px;
+}
+/* line 144, ../sass/_widgets.scss */
+.social_widget div.social_button_container .twitter_button {
+  position: absolute;
+  top: 0;
+  left: -110px;
+  width: 103px;
+  height: 45px;
+  background: #55acee;
+  text-align: center;
+}
+/* line 153, ../sass/_widgets.scss */
+.social_widget div.social_button_container .twitter_button img {
+  width: 40px;
+}
+/* line 158, ../sass/_widgets.scss */
+.social_widget div.social_button_container .facebook_button {
+  position: absolute;
+  top: 0;
+  right: -110px;
+  width: 103px;
+  height: 45px;
+  background: #3b5998;
+  text-align: center;
+}
+/* line 167, ../sass/_widgets.scss */
+.social_widget div.social_button_container .facebook_button img {
+  width: 35px;
+}
+/* line 172, ../sass/_widgets.scss */
+.social_widget div.social_button_container .twitter_button:hover {
+  background: #77bdf1;
+  transition: all, 0.4s;
+}
+/* line 177, ../sass/_widgets.scss */
+.social_widget div.social_button_container .facebook_button:hover {
+  background: #7189bb;
+  transition: all, 0.4s;
+}
 
-/* line 140, ../sass/_widgets.scss */
+/* line 184, ../sass/_widgets.scss */
 .button.view_all_more_button {
   width: 206px;
 }
