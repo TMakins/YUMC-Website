@@ -7,20 +7,45 @@
 
 get_header();
 
-$fb_events = yumc_get_facebook_events();
+$fb_events = yumc_get_facebook_events(30);
+$google_events = yumc_get_google_events(30);
+
 $events_array = array();
 
-foreach($fb_events as $event) {
+foreach($google_events as $event) {
 	$events_array[] = array(
-		'id' => 'fb-' . $event["id"],
-		'timestamp' => yumc_parse_fb_timestamp($event["start_time"]),
-		'title' => $event["name"],
+		'id' => 'google-' . $event["id"],
+		'timestamp' => yumc_parse_google_timestamp($event["start"]["dateTime"]),
+		'title' => $event["summary"],
 		'content' => nl2br( $event["description"] ),
-		'location' => $event["place"]["name"],
-		'url' => rtrim( get_post_type_archive_link( 'yumc_events' ), '/' ) . '#event-fb-' . $event["id"],
-		'origin' => "fb",
-		'image' => $event["cover"]["source"],
+		'location' => $event["location"],
+		'url' => rtrim( get_post_type_archive_link( 'yumc_events' ), '/' ) . '#event-google-' . $event["id"],
+		'origin' => "google",
+		'image' => "",
 	);
+}
+
+foreach($fb_events as $event) {
+	$exists = false;
+	foreach( $events_array as $existing_event )	{
+		if( $existing_event["title"] == $event["name"] ) {
+			$exists = true;
+			break;
+		}
+	}
+
+	if(!$exists) {
+		$events_array[] = array(
+			'id' => 'fb-' . $event["id"],
+			'timestamp' => yumc_parse_fb_timestamp($event["start_time"]),
+			'title' => $event["name"],
+			'content' => nl2br($event["description"]),
+			'location' => $event["place"]["name"],
+			'url' => rtrim(get_post_type_archive_link('yumc_events'), '/') . '#event-fb-' . $event["id"],
+			'origin' => "fb",
+			'image' => $event["cover"]["source"],
+		);
+	}
 }
 
 $args = array(
@@ -112,6 +137,7 @@ if( $events_array ) {
 							?>
 
 							<?php echo $event["content"] ?>
+							<div class="clear"></div>
 						</div>
 						<div class="clear"></div>
 					</div>

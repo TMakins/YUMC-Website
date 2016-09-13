@@ -16,6 +16,8 @@ define("TWITTER_API_KEY", "z6H7reVnqgExWjdZhRDK8lRon");
 define("TWITTER_API_SECRET", "7whoDFWxKY8t5s3DHbOXmAB0Uyc16JBc1nmpMx5AL5JamiM6bJ");
 define("TWITTER_ACCESS_TOKEN", "210615217-fsRwoB9RV2aU3WDXSL8S4tkEELZrwzsl22dpABbi");
 define("TWITTER_ACCESS_SECRET", "R2s3Y3yayMElfhSNvb8h1wg1wk7a2fc3WMl3ZoQTkQnC2");
+define("GOOGLE_CALENDAR_ID", "mountaineering@yusu.org");
+define("GOOGLE_CALENDAR_KEY", "AIzaSyA_2MLeqEt0ry2OTjLKfHTYIiQ-zAd8H-Y");
 
 /*
  *	Classes
@@ -136,6 +138,10 @@ function yumc_parse_fb_timestamp( $fb_timestamp ){
 	return new DateTime($fb_timestamp);
 }
 
+function yumc_parse_google_timestamp( $google_timestamp ){
+	return new DateTime($google_timestamp);
+}
+
 function yumc_parse_twitter_timestamp( $twitter_timestamp ){
 	return new DateTime($twitter_timestamp);
 }
@@ -164,6 +170,7 @@ function yumc_get_facebook_events( $num_events = 30 ) {
 	$fb_events_json = file_get_contents("https://graph.facebook.com/ClimbingYork/events?access_token=" . FB_ACCESS_TOKEN . "&limt=60&fields=name,description,place,start_time,id,cover");
 	$fb_events_obj = json_decode($fb_events_json, true)["data"];
 
+	// Sort events
 	usort($fb_events_obj, function ($item1, $item2) {
 		if ( yumc_parse_fb_timestamp( $item1["start_time"] ) == yumc_parse_fb_timestamp( $item2["start_time"] ) ) return 0;
 		return yumc_parse_fb_timestamp( $item1["start_time"] ) < yumc_parse_fb_timestamp( $item2["start_time"] ) ? -1 : 1;
@@ -173,7 +180,7 @@ function yumc_get_facebook_events( $num_events = 30 ) {
 	$count = 0;
 	foreach($fb_events_obj as $fb_event)
 	{
-		if(yumc_parse_fb_timestamp( $fb_event["start_time"] ) > new DateTime("14-07-2014") && $count < $num_events) {
+		if(yumc_parse_fb_timestamp( $fb_event["start_time"] ) > new DateTime() && $count < $num_events) {
 			$fb_events[] = $fb_event;
 			$count++;
 		}
@@ -183,6 +190,30 @@ function yumc_get_facebook_events( $num_events = 30 ) {
 	}
 
 	return $fb_events;
+}
+
+
+function yumc_get_google_events( $num_events = 30 ) {
+	// https://www.googleapis.com/calendar/v3/calendars/mountaineering@yusu.org/events?key=AIzaSyA_2MLeqEt0ry2OTjLKfHTYIiQ-zAd8H-Y&singleEvents=true&timeMin=2016-09-13T00:00:00Z
+	// https://www.googleapis.com/calendar/v3/calendars/mountaineering@yusu.org/events?key=AIzaSyA_2MLeqEt0ry2OTjLKfHTYIiQ-zAd8H-Y&singleEvents=true&timeMin=2016-09-13T12:05:47+00:00
+	$now = new DateTime();
+	$google_events_json = file_get_contents("https://www.googleapis.com/calendar/v3/calendars/" . GOOGLE_CALENDAR_ID . "/events?key=" . GOOGLE_CALENDAR_KEY . "&singleEvents=true&timeMin=" . $now->format("Y-m-d\TH:i:s") . (($now->format("P") == "+00:00") ? "Z" : $now->format("P")));
+	$google_events_obj = json_decode($google_events_json, true)["items"];
+
+	$google_events = array();
+	$count = 0;
+	foreach($google_events_obj as $google_event)
+	{
+		if($count < $num_events) {
+			$google_events[] = $google_event;
+			$count++;
+		}
+
+		if($count >= $num_events)
+			break;
+	}
+
+	return $google_events;
 }
 
 /*
