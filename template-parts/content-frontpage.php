@@ -39,3 +39,21 @@
 <div class="grid_1">&nbsp;</div>
 
 <?php include( locate_template( 'template-parts/widgets/social.php' ) ); ?>
+
+<div class="clear"></div>
+
+<div class="separator prefix_2 suffix_2"><span class="grid_7"></span></div>
+
+<div class="clear"></div>
+
+<div class="sponsors prefix_1 suffix_1 grid_11">
+    <div id="YUSU_logo" class="sponsor-container">
+        <img src="<?php echo get_template_directory_uri(); ?>/images/yusu_logo.png" alt="York University Students Union">
+    </div>
+    <div id="YUSport_logo" class="sponsor-container">
+        <img src="<?php echo get_template_directory_uri(); ?>/images/york_sport_logo.png" alt="York Sport Union">
+    </div>
+    <div id="studypool_logo" class="sponsor-container">
+        <img src="<?php echo get_template_directory_uri(); ?>/images/studypool_logo.jpg" alt="Studypool">
+    </div>
+</div>
