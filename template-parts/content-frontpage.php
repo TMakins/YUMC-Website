@@ -53,7 +53,7 @@
     <div id="YUSport_logo" class="sponsor-container">
         <img src="<?php echo get_template_directory_uri(); ?>/images/york_sport_logo.png" alt="York Sport Union">
     </div>
-    <div id="studypool_logo" class="sponsor-container">
+    <!--<div id="studypool_logo" class="sponsor-container">
         <img src="<?php echo get_template_directory_uri(); ?>/images/studypool_logo.jpg" alt="Studypool">
-    </div>
+    </div>-->
 </div>
