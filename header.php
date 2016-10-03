@@ -14,9 +14,9 @@
 		<?php wp_head(); ?>
 	</head>
 	<body <?php body_class() ?> style="margin-top: 80px;">
-		<div class="global-message-alert">
+		<!--<div class="global-message-alert">
 			This website is brand new and still being tested, if you see something that's not working properly please let me know by email: <a href="mailto:tem512@york.ac.uk">tem512@york.ac.uk</a>
-		</div>
+		</div>-->
 
 		<header id="masthead" class="site-header" role="banner">
 			<?php if ( get_header_image() ) { ?>

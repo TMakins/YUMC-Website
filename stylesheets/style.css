@@ -782,7 +782,7 @@ article.smaller_post {
 /* line 26, ../sass/_sponsors.scss */
 .sponsors .sponsor-container {
   text-align: center;
-  width: 33%;
+  width: 50%;
   float: left;
 }
 
