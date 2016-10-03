@@ -106,7 +106,7 @@ if( $events_array ) {
                     <span class="month"><?php echo $event["timestamp"]->format('M'); ?></span>
                 </div>
                 <div class="content">
-                    <h4><?php echo $event["title"]; ?></h4>
+                    <h4><?php if (strlen($event["title"]) > 34) { echo preg_replace('/\s+?(\S+)?$/', '', substr($event["title"], 0, 35)) . ' [...]'; } else { echo $event["title"]; } ?></h4>
                     <p>
                         <?php
                         echo $event["timestamp"]->format('g');
